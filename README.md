@@ -20,6 +20,9 @@ git clone https://github.com/crhaxx/Mistr-Lovu-bot.git
 
 # Navigate to the project directory
 cd Mistr-Lovu-bot
+
+# Create .env file
+echo TOKEN= USER_ID= GUILD_ID= > .env
 ```
 
 # 🔑 How to start
