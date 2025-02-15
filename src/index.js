@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { Client, IntentsBitField } = require("discord.js");
+const { Client, IntentsBitField, EmbedBuilder } = require("discord.js");
 
 const client = new Client({
   intents: [
@@ -14,14 +14,30 @@ client.on("ready", (c) => {
   console.log(`✅ ${c.user.tag} is online`);
 });
 
-client.on("interactionCreate", (interaction) => {
-  if (!interaction.isChatInputCommand()) return;
+client.on("interactionCreate", async (interaction) => {
+  try {
+    if (!interaction.isButton()) return;
 
-  if (interaction.commandName === "sum") {
-    const num1 = interaction.options.get("first-number").value;
-    const num2 = interaction.options.get("second-number").value;
+    await interaction.deferReply({ ephemeral: true });
 
-    interaction.reply(`sum is ${num1 + num2}`);
+    const role = interaction.guild.roles.cache.get(interaction.customId);
+    if (!role) {
+      interaction.editReply({ content: "Couldn't find that role" });
+      return;
+    }
+
+    const hasRole = interaction.member.roles.cache.has(role.id);
+
+    if (hasRole) {
+      await interaction.member.roles.remove(role);
+      await interaction.editReply({ content: "Role removed" });
+      return;
+    }
+    await interaction.member.roles.add(role);
+    await interaction.editReply({ content: "Role added" });
+    return;
+  } catch (error) {
+    console.log(error);
   }
 });
 
