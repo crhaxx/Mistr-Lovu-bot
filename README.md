@@ -31,7 +31,7 @@ Run following command in your terminal to check the installed version of nodemon
 nodemon -v
 ```
 
-If your nodemon version is low or you do not have nodemon installed yet, run the following command in your terminal to install nodemon globally:
+If your nodemon version is low or you do not have nodemon installed yet, run the following command in your terminal to install nodemon globally
 ```bash
 npm install -g nodemon
 ```
