@@ -17,6 +17,9 @@ To build the packages, follow these steps:
 
 # Clone the repository
 git clone https://github.com/crhaxx/Mistr-Lovu-bot.git
+
+# Navigate to the project directory
+cd Mistr-Lovu-bot
 ```
 
 # 🔑 How to start
