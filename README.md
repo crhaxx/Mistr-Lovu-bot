@@ -36,6 +36,15 @@ If your nodemon version is low or you do not have nodemon installed yet, run the
 npm install -g nodemon
 ```
 
+# ⚙️ Customize your settings
+Set TOKEN, GUILD_ID and USER_ID in the .env file
+
+```bash
+TOKEN=123
+USER_ID=123
+GUILD_ID=123
+```
+
 # 🔑 How to start
 Run following command in your terminal
 
