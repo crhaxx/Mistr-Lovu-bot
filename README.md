@@ -19,7 +19,7 @@ To build the packages, follow these steps:
 git clone https://github.com/crhaxx/Mistr-Lovu-bot.git
 ```
 
-# How to start
+# 🔑 How to start
 
 Run following command in your terminal
 
