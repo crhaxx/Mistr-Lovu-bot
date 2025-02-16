@@ -18,27 +18,6 @@ const client = new Client({
 
 eventHandler(client);
 
-// let status = [
-//   {
-//     name: "Chytám ryby",
-//     type: ActivityType.Playing,
-//   },
-//   {
-//     name: "Vaše zprávy",
-//     type: ActivityType.Watching,
-//   },
-// ];
-
-// client.on("ready", (c) => {
-//   console.log(`✅ ${c.user.tag} is online`);
-
-//   setInterval(() => {
-//     let random = Math.floor(Math.random() * status.length);
-//     client.user.setActivity(status[random]);
-//     console.log("Status changed to: " + status[random].name);
-//   }, 30000);
-// });
-
 client.on("interactionCreate", async (interaction) => {
   try {
     if (!interaction.isButton()) return;
