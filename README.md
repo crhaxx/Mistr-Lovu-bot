@@ -15,12 +15,37 @@ To build the packages, follow these steps:
 # Ensure Git is installed
 # Visit https://git-scm.com to download and install console Git if not already installed
 
+# Ensure Nodejs is installed
+# Visit https://nodejs.org/en to download Nodejs
+
 # Clone the repository
 git clone https://github.com/crhaxx/Mistr-Lovu-bot.git
+
+# Navigate to the project directory
+cd Mistr-Lovu-bot
 ```
 
-# How to start
+# 📄 Install the necessary tools
+Run following command in your terminal to check the installed version of nodemon on your computer
+```bash
+nodemon -v
+```
 
+If your nodemon version is low or you do not have nodemon installed yet, run the following command in your terminal to install nodemon globally
+```bash
+npm install -g nodemon
+```
+
+# ⚙️ Customize your settings
+Set TOKEN, GUILD_ID and USER_ID in the .env file
+
+```bash
+TOKEN=123
+USER_ID=123
+GUILD_ID=123
+```
+
+# 🔑 How to start
 Run following command in your terminal
 
 ```bash
