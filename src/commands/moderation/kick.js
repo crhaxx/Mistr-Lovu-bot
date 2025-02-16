@@ -8,19 +8,19 @@ const {
 module.exports = {
   //deleted: true,
   name: "kick",
-  description: "Kicks a member!",
+  description: "Vyhodí uživatele!",
   // devOnly: Boolean,
   // testOnly: Boolean,
   options: [
     {
-      name: "target-user",
-      description: "The user to kick.",
+      name: "uzivatel",
+      description: "Uživatel, kterého chcete vyhodit",
       required: true,
       type: ApplicationCommandOptionType.Mentionable,
     },
     {
-      name: "reason",
-      description: "The reason for kicking.",
+      name: "duvod",
+      description: "Důvod pro vyhození uživatele",
       type: ApplicationCommandOptionType.String,
     },
   ],
@@ -34,9 +34,8 @@ module.exports = {
    */
 
   callback: async (client, interaction) => {
-    const tagretUserId = interaction.options.get("target-user").value;
-    const reason =
-      interaction.options.get("reason")?.value || "No reason provided";
+    const tagretUserId = interaction.options.get("uzivatel").value;
+    const reason = interaction.options.get("duvod")?.value || "Bez důvodu";
 
     await interaction.deferReply();
 
@@ -44,7 +43,7 @@ module.exports = {
 
     if (!targetUser) {
       await interaction.editReply({
-        content: "Couldn't find the user.",
+        content: "Nemůžu najít tohoto uživatele.",
       });
       return;
     }
@@ -62,14 +61,14 @@ module.exports = {
 
     if (targetUserRolePosition >= requestUserRolePosition) {
       await interaction.editReply({
-        content: "You can't kick someone with the same or higher role.",
+        content: "Nemůžete vyhodit majitele serveru.",
       });
       return;
     }
 
     if (targetUserRolePosition >= botRolePosition) {
       await interaction.editReply({
-        content: "I can't kick someone with the same or higher role.",
+        content: "Nemůžu vyhodit uživatele se stejnou nebo vyšší rolí.",
       });
       return;
     }
@@ -78,7 +77,7 @@ module.exports = {
     try {
       await targetUser.kick({ reason });
       await interaction.editReply({
-        content: `User ${targetUser.user.tag} has been kicked for: ${reason}`,
+        content: `Uživatel ${targetUser.user.tag} byl vyhozen z důvodu: ${reason}`,
       });
     } catch (error) {
       console.log(`There was an error when kicking: ${error}`);

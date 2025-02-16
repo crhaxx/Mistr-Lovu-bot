@@ -8,23 +8,23 @@ const ms = require("ms");
 
 module.exports = {
   name: "timeout",
-  description: "Timeout user for a given amount of time",
+  description: "Ztlumí uživatele po určitou dobu",
   options: [
     {
-      name: "target-user",
-      description: "The user to be timed out",
+      name: "uzivatel",
+      description: "Uživatel, kterého chcete ztlumit",
       type: ApplicationCommandOptionType.Mentionable,
       required: true,
     },
     {
-      name: "duration",
-      description: "Timeout duration (30m, 1h, 1d)",
+      name: "doba",
+      description: "Doba ztlumení (např. 30m, 1h, 1d)",
       type: ApplicationCommandOptionType.String,
       required: true,
     },
     {
-      name: "reason",
-      description: "The reason for the timeout",
+      name: "duvod",
+      description: "Důvod pro ztlumení",
       type: ApplicationCommandOptionType.String,
       required: false,
     },
@@ -40,21 +40,20 @@ module.exports = {
    */
 
   callback: async (client, interaction) => {
-    const mentionable = interaction.options.get("target-user").value;
-    const duration = interaction.options.get("duration").value;
-    const reason =
-      interaction.options.get("reason")?.value || "No reason provided";
+    const mentionable = interaction.options.get("uzivatel").value;
+    const duration = interaction.options.get("doba").value;
+    const reason = interaction.options.get("duvod")?.value || "Bez důvodu";
 
     await interaction.deferReply();
 
     const targetUser = await interaction.guild.members.fetch(mentionable);
     if (!targetUser) {
-      await interaction.editReply("That user is not on the server");
+      await interaction.editReply("Tento uživatel není na serveru");
       return;
     }
 
     if (targetUser.user.bot) {
-      await interaction.editReply("I cannot timeout bots");
+      await interaction.editReply("Nemůžu ztlumit roboty");
       return;
     }
 
@@ -62,15 +61,13 @@ module.exports = {
 
     if (isNaN(msDuration)) {
       await interaction.editReply(
-        "Invalid duration. Use 'ms' format (e.g., 30m, 1h, 1d)"
+        "Špatný formát doby. Použijte 'ms' formát (např. 30m, 1h, 1d)"
       );
       return;
     }
 
     if (msDuration < 5000 || msDuration > 2.419e9) {
-      await interaction.editReply(
-        "Timeout duration must be between 5s and 28 days"
-      );
+      await interaction.editReply("Doba ztlumení musí být mezi 5s a 28 dny");
     }
 
     const targetUserRolePosition = targetUser.roles.highest.position;
@@ -79,14 +76,14 @@ module.exports = {
 
     if (targetUserRolePosition >= requestUserRolePosition) {
       await interaction.editReply({
-        content: "You can't timeout someone with the same or higher role.",
+        content: "Nemůžete ztlumit uživatele se stejnou nebo vyšší rolí.",
       });
       return;
     }
 
     if (targetUserRolePosition >= botRolePosition) {
       await interaction.editReply({
-        content: "I can't timeout someone with the same or higher role.",
+        content: "Nemůžu ztlumit uživatele se stejnou nebo vyšší rolí.",
       });
       return;
     }
@@ -98,18 +95,18 @@ module.exports = {
       if (targetUser.isCommunicationDisabled()) {
         await targetUser.timeout(msDuration, reason);
         await interaction.editReply({
-          content: `Successfully timed out ${
-            targetUser.user.tag
-          } for ${prettyMs(msDuration, { verbose: true })}.\nReason: ${reason}`,
+          content: `${targetUser.user.tag} byl ztlumen na ${prettyMs(
+            msDuration,
+            { verbose: true }
+          )}.\nDůvod: ${reason}`,
         });
       }
 
       await targetUser.timeout(msDuration, reason);
       await interaction.editReply({
-        content: `${targetUser.user.tag} was timed out for ${prettyMs(
-          msDuration,
-          { verbose: true }
-        )}.\nReason: ${reason}`,
+        content: `${targetUser.user.tag} byl ztlumen na ${prettyMs(msDuration, {
+          verbose: true,
+        })}.\nDůvod: ${reason}`,
       });
     } catch (error) {
       console.log(`There was an error when timing out: ${error}`);
