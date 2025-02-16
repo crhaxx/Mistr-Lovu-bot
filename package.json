@@ -12,6 +12,8 @@
   "dependencies": {
     "discord.js": "^14.18.0",
     "dotenv": "^16.4.7",
-    "mistr-lovu-bot": "file:"
+    "mistr-lovu-bot": "file:",
+    "ms": "^2.1.3",
+    "pretty-ms": "^9.2.0"
   }
 }

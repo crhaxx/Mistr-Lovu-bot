@@ -37,12 +37,21 @@ npm install -g nodemon
 ```
 
 # ⚙️ Customize your settings
-Set TOKEN, GUILD_ID and USER_ID in the .env file
+Set TOKEN, GUILD_ID and USER_ID in the `.env` file
 
 ```bash
 TOKEN=123
-USER_ID=123
-GUILD_ID=123
+USER_ID=1340342256988721315
+GUILD_ID=791366919319846912
+```
+
+Set testServer, clientId, devs in the `config.json` file
+```bash
+{
+  "testServer": "791366919319846912",
+  "clientId": "1340342256988721315",
+  "devs": ["790862986813898782"]
+}
 ```
 
 # 🔑 How to start
