@@ -25,7 +25,7 @@ git clone https://github.com/crhaxx/Mistr-Lovu-bot.git
 cd Mistr-Lovu-bot
 
 # Install necessary libraries
-npm install discord.js, dotenv, ms, pretty-ms
+npm install discord.js dotenv ms pretty-ms
 ```
 
 # 📄 Install the necessary tools
