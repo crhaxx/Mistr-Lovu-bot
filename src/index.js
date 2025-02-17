@@ -45,4 +45,12 @@ client.on("interactionCreate", async (interaction) => {
   }
 });
 
+client.on("guildMemberAdd", (guildMember) => {
+  const welcomeMessage = `Zdareeec ${guildMember.user}! Vítej na našem Discord serveru!`;
+
+  client.channels
+    .fetch("1338286348737708118")
+    .then((channel) => channel.send(welcomeMessage).catch(() => {}));
+});
+
 client.login(process.env.TOKEN);
