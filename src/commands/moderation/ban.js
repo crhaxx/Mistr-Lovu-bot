@@ -8,19 +8,19 @@ const {
 module.exports = {
   //deleted: true,
   name: "ban",
-  description: "Bans a member!",
+  description: "Zabanuje uživatele",
   // devOnly: Boolean,
   // testOnly: Boolean,
   options: [
     {
-      name: "target-user",
-      description: "The user to ban.",
+      name: "uzivatel",
+      description: "Uživatel, kterého chcete zabanovat",
       required: true,
       type: ApplicationCommandOptionType.Mentionable,
     },
     {
-      name: "reason",
-      description: "The reason for banning.",
+      name: "duvod",
+      description: "Důvod pro zabanování",
       type: ApplicationCommandOptionType.String,
     },
   ],
@@ -34,9 +34,8 @@ module.exports = {
    */
 
   callback: async (client, interaction) => {
-    const tagretUserId = interaction.options.get("target-user").value;
-    const reason =
-      interaction.options.get("reason")?.value || "No reason provided";
+    const tagretUserId = interaction.options.get("uzivatel").value;
+    const reason = interaction.options.get("duvod")?.value || "Bez důvodu";
 
     await interaction.deferReply();
 
@@ -44,14 +43,14 @@ module.exports = {
 
     if (!targetUser) {
       await interaction.editReply({
-        content: "Couldn't find the user.",
+        content: "Nemůžu najít tohoto uživatele.",
       });
       return;
     }
 
     if (tagretUserId === interaction.guild.ownerId) {
       await interaction.editReply({
-        content: "You can't ban the owner of the server.",
+        content: "Nemůžete zabanovat majitele serveru.",
       });
       return;
     }
@@ -62,14 +61,15 @@ module.exports = {
 
     if (targetUserRolePosition >= requestUserRolePosition) {
       await interaction.editReply({
-        content: "You can't ban someone with the same or higher role.",
+        content: "Nemůžete zabanovat uživatele se stejnou nebo vyšší rolí.",
       });
       return;
     }
 
     if (targetUserRolePosition >= botRolePosition) {
       await interaction.editReply({
-        content: "I can't ban someone with the same or higher role.",
+        content:
+          "Nemůžu zabanovat uživatele se stejnou nebo vyšší rolí než já.",
       });
       return;
     }
@@ -78,7 +78,7 @@ module.exports = {
     try {
       await targetUser.ban({ reason });
       await interaction.editReply({
-        content: `User ${targetUser.user.tag} has been banned for: ${reason}`,
+        content: `Uživatel ${targetUser.user.tag} byl zabanován z důvodu: ${reason}`,
       });
     } catch (error) {
       console.log(`There was an error when banning: ${error}`);
