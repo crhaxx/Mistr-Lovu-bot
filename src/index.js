@@ -26,7 +26,9 @@ client.on("interactionCreate", async (interaction) => {
 
     const role = interaction.guild.roles.cache.get(interaction.customId);
     if (!role) {
-      interaction.editReply({ content: "Couldn't find that role" });
+      interaction.editReply({
+        content: `Role <@&${role.id}> byla smazána`,
+      });
       return;
     }
 
@@ -34,11 +36,15 @@ client.on("interactionCreate", async (interaction) => {
 
     if (hasRole) {
       await interaction.member.roles.remove(role);
-      await interaction.editReply({ content: "Role removed" });
+      await interaction.editReply({
+        content: `Oddělali jste si roli: <@&${role.id}>`,
+      });
       return;
     }
     await interaction.member.roles.add(role);
-    await interaction.editReply({ content: "Role added" });
+    await interaction.editReply({
+      content: `Přidali jste si roli: <@&${role.id}>`,
+    });
     return;
   } catch (error) {
     console.log(error);
