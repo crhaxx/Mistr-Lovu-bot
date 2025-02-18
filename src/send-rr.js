@@ -8,6 +8,8 @@ const {
   EmbedBuilder,
 } = require("discord.js");
 
+const { reactionRolesChannelID } = require("../config.json");
+
 const client = new Client({
   intents: [
     IntentsBitField.Flags.Guilds,
@@ -68,7 +70,7 @@ const roles_skill = [
 
 client.on("ready", async (c) => {
   try {
-    const channel = await client.channels.cache.get("1339151527473971342");
+    const channel = await client.channels.cache.get(reactionRolesChannelID);
     if (!channel) return;
 
     const row = new ActionRowBuilder();

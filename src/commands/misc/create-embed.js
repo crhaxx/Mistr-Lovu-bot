@@ -80,7 +80,6 @@ module.exports = {
         content: zprava,
       });
 
-      console.log(embed);
       interaction.reply(`Embed zpráva byla poslána do <#${kanal}>`);
     } catch (error) {
       console.log(error);
