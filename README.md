@@ -12,11 +12,11 @@ To build the packages, follow these steps:
 ```bash
 # Open a terminal (Command Prompt or PowerShell for Windows, Terminal for macOS or Linux)
 
-# Ensure Git is installed
-# Visit https://git-scm.com to download and install console Git if not already installed
-
 # Ensure Nodejs is installed
 # Visit https://nodejs.org/en to download Nodejs
+
+# Ensure Git is installed
+# Visit https://git-scm.com to download and install console Git if not already installed
 
 # Clone the repository
 git clone https://github.com/crhaxx/Mistr-Lovu-bot.git
@@ -29,36 +29,41 @@ npm install discord.js dotenv ms pretty-ms
 ```
 
 # 📄 Install the necessary tools
+
 Run following command in your terminal to check the installed version of nodemon on your computer
+
 ```bash
 nodemon -v
 ```
 
 If your nodemon version is low or you do not have nodemon installed yet, run the following command in your terminal to install nodemon globally
+
 ```bash
 npm install -g nodemon
 ```
 
 # ⚙️ Customize your settings
-Set TOKEN, GUILD_ID and USER_ID in the `.env` file
+
+Create an `.env` file and set the value of **TOKEN** (bot token)
 
 ```bash
-TOKEN=123
-USER_ID=1340342256988721315
-GUILD_ID=791366919319846912
+TOKEN = 123
 ```
 
-Set testServer, clientId, devs in the `config.json` file
+Set **testServer**, **clientId**, **devs**, **reactionRolesChannelID** in the `config.json` file
+
 ```bash
 {
   "testServer": "791366919319846912",
   "clientId": "1340342256988721315",
   "devs": ["790862986813898782"]
+  "reactionRolesChannelID": "1338516980981829742"
 }
 ```
 
 # 🔑 How to start
-Run following command in your terminal
+
+In the terminal run the following command
 
 ```bash
 nodemon
