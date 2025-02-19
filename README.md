@@ -1,4 +1,4 @@
-![Abblix OIDC Server](https://i.postimg.cc/mk9WjqJY/Mistr-Lovu-Bot-1.png)
+![Banner](https://i.postimg.cc/mk9WjqJY/Mistr-Lovu-Bot-1.png)
 ![GitHub forks](https://img.shields.io/github/forks/crhaxx/Mistr-Lovu-bot)
 ![GitHub Repo stars](https://img.shields.io/github/stars/crhaxx/Mistr-Lovu-bot)
 ![GitHub top language](https://img.shields.io/github/languages/top/crhaxx/Mistr-Lovu-bot)
