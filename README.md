@@ -54,6 +54,7 @@ Set testServer, clientId, devs in the `config.json` file
   "testServer": "791366919319846912",
   "clientId": "1340342256988721315",
   "devs": ["790862986813898782"]
+  "reactionRolesChannelID": "1338516980981829742"
 }
 ```
 
