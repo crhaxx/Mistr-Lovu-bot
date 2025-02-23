@@ -44,12 +44,10 @@ npm install -g nodemon
 
 # ⚙️ Customize your settings
 
-Create an `.env` file and set the values **TOKEN** (bot token), **GUILD_ID** (server id) and **USER_ID** (bot id)
+Create an `.env` file and set the value of **TOKEN** (bot token)
 
 ```bash
 TOKEN = 123
-USER_ID = 1340342256988721315
-GUILD_ID = 791366919319846912
 ```
 
 Set **testServer**, **clientId**, **devs**, **reactionRolesChannelID** in the `config.json` file
