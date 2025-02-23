@@ -79,6 +79,13 @@ module.exports = {
       (r) => r.name === "💎 VIP člen"
     );
 
+    if (getTargetUser.roles.cache.some((role) => role.name === "💎 VIP člen")) {
+      await interaction.editReply({
+        content: "Tento uživatel již má VIP status.",
+      });
+      return;
+    }
+
     try {
       await getTargetUser.roles.add(role);
       await getTargetUser.send(`Obrdžel/a jsi vip za ${message}! 🎉`);
