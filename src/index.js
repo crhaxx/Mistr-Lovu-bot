@@ -4,6 +4,7 @@ const {
   IntentsBitField,
   EmbedBuilder,
   ActivityType,
+  ChannelType,
 } = require("discord.js");
 const eventHandler = require("./handlers/eventHandler");
 
@@ -78,11 +79,11 @@ Jsme komunita nadšených rybářů, kde můžeš sdílet své úlovky, získáv
   const welcomeMessage = `Zdareeec ${guildMember.user}! Vítej na našem Discord serveru!`;
 
   client.channels
-    .fetch("1338286348737708118")
+    .fetch("1344775154428809217")
     .then((channel) => channel.send(welcomeMessage).catch(() => {}));
 
   client.channels
-    .fetch("1338514233511514144")
+    .fetch("1344775149257490482")
     .then((channel) => channel.send({ embeds: [embed] }).catch(() => {}));
 });
 
@@ -90,7 +91,7 @@ client.on("guildMemberRemove", (guildMember) => {
   const leaveMessage = `${guildMember.user} nás opustil! 😔`;
 
   client.channels
-    .fetch("1338514233511514144")
+    .fetch("1344775149257490482")
     .then((channel) => channel.send(leaveMessage).catch(() => {}));
 });
 
