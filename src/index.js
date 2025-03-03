@@ -58,18 +58,18 @@ client.on("guildMemberAdd", (guildMember) => {
       `Zdareec ${guildMember.user.tag}, vítej na ${guildMember.guild.name}`
     )
     .setDescription(
-      `📜 Přivítání nového rybáře <#1338514233511514144>.
+      `📜 Přivítání nového rybáře <#1344775149257490482>.
 👋 Vítej na serveru ${guildMember.guild.name}! 🎣🐟
 Jsme komunita nadšených rybářů, kde můžeš sdílet své úlovky, získávat tipy a bavit se s ostatními!
 
 🔹 Než začneš, přečti si pravidla v kanálu <#1338286348737708114>.
-🔹 Vyber si svou rybářskou roli v <#1338516980981829742>.
-🔹 Přidej se k diskuzím v <#1338286348737708118> a pochlub se svými úlovky v <#1338286348737708119>!`
+🔹 Vyber si svou rybářskou roli v <#1344771018291417208>.
+🔹 Přidej se k diskuzím v <#1344775154428809217> a pochlub se svými úlovky v <#1344771019348639807>!`
     )
     .addFields({
       name: "🎯 Jak začít?",
       value: `✅ Klikni na ✅ v kanálu <#1338286348737708114> pro plný přístup k serveru.
-✅ Vyber si typ rybáře v <#1338516980981829742> (např. 🎣 Kaprař, 🐠 Feeder specialista).
+✅ Vyber si typ rybáře v <#1344771018291417208> (např. 🎣 Kaprař, 🐠 Feeder specialista).
 ✅ Připoj se k hlasovým kanálům a pokecáme o rybaření! Jsi ${guildMember.guild.memberCount} člen tohoto serveru!`,
     })
     .setFooter({
